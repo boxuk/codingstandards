@@ -406,8 +406,6 @@ class Php_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Snif
                          */
                     }
                 }//end if
-/*
- * GD
                 // Make sure the names of the parameter comment matches the
                 // actual parameter.
                 if (isset($realParams[($pos - 1)]) === true) {
@@ -450,7 +448,6 @@ class Php_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Snif
                     $error = 'Missing comment for param "'.$paramName.'" at position '.$pos;
                     $this->currentFile->addError($error, $errorPos);
                 }
-                */
 
                 $previousParam = $param;
 

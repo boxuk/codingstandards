@@ -4,7 +4,7 @@
  */
 class Php_Sniffs_CodeAnalysis_LongMethodSniff implements PHP_CodeSniffer_Sniff {
     
-    private $methodLengthLimit = 90;
+    private $methodLengthLimit = 50;
 
     public function register() {
         return array(T_FUNCTION);
