@@ -2,7 +2,7 @@
 /**
  * @package BoxUK
  */
-class Php_Sniffs_CodeAnalysis_LongMethodSniff implements PHP_CodeSniffer_Sniff {
+class PHP_Sniffs_CodeAnalysis_LongMethodSniff implements PHP_CodeSniffer_Sniff {
     
     private $methodLengthLimit = 50;
 

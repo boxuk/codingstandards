@@ -4,7 +4,7 @@
  *
  * @package Amaxus
  */
-class Php_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_Sniff {
+class PHP_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_Sniff {
 
     /**
      * Registers tokens we're sniffing for

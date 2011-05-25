@@ -4,7 +4,7 @@
  * 
  * @package BoxUK
  */
-class Php_Sniffs_CodeAnalysis_PPrefixSniff implements PHP_CodeSniffer_Sniff {
+class PHP_Sniffs_CodeAnalysis_PPrefixSniff implements PHP_CodeSniffer_Sniff {
     
     /**
      * Registers the type of tokens we're sniffing for

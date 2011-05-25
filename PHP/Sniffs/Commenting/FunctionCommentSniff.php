@@ -35,7 +35,7 @@
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class Php_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sniff
+class PHP_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sniff
 {
 
     /**
