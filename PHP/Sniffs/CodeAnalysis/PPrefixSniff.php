@@ -55,7 +55,7 @@ class PHP_Sniffs_CodeAnalysis_PPrefixSniff implements PHP_CodeSniffer_Sniff {
         $parameterName = $tokens[$token]['content'];
         
         if (strpos($parameterName, '$p_') === 0) {
-            $error  = "Arguments must not be prefixed with $p_ (found '$parameterName')";
+            $error  = "Arguments must not be prefixed with \$p_ (found '$parameterName')";
             $phpcsFile->addError($error, $argPtr, 'InvalidPrefix');
             return true;
         } else {
