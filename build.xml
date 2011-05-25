@@ -4,7 +4,7 @@
 
     <target name="test-php-unit">
         <mkdir dir="log" />
-        <exec command="phpunit --testdox --log-junit log/phpunit.log tests/php" checkreturn="true" passthru="true" />
+        <exec command="phpunit --testdox --log-junit log/phpunit.xml tests/php" checkreturn="true" passthru="true" />
     </target>
     
     <target name="test-php-cs">
