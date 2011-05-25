@@ -44,6 +44,7 @@ class ShouldPass {
     
     // comment is optional
     public function validDefaultValues($foo, $bar = 'baz') {
+        $bar = 1; // required use
         return $foo;
     }
     
@@ -92,7 +93,8 @@ if(true)        {
      * @throws Exception
      */
     public function throwAnException() {
-        if (true) {
+        $x = true;
+        if ($x) {
             throw new Exception();
         }
     }

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <project name="boxuk-codingstandards" basedir="." default="test">
+
+    <target name="test-php-unit">
+        <mkdir dir="log" />
+        <exec command="phpunit --testdox --log-junit log/phpunit.log tests/php" checkreturn="true" passthru="true" />
+    </target>
     
-    <target name="test-php">
+    <target name="test-php-cs">
         <exec command="phpcs -n PHP/ --standard=PHP/" checkreturn="true" passthru="true" />
     </target>
+    
+    <target name="test-php" depends="test-php-unit,test-php-cs"></target>
     
     <target name="test" depends="test-php"></target>
     
