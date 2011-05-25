@@ -3,7 +3,7 @@
 <project name="boxuk-codingstandards" basedir="." default="test">
     
     <target name="test-php">
-        <exec command="phpcs Php/ --standard=Php/" checkreturn="true" passthru="true" />
+        <exec command="phpcs -n Php/ --standard=Php/" checkreturn="true" passthru="true" />
     </target>
     
     <target name="test" depends="test-php"></target>
