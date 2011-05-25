@@ -6,12 +6,23 @@
  */
 class Php_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_Sniff {
 
+    /**
+     * Registers tokens we're sniffing for
+     * 
+     * @return array
+     */
     public function register() {
 
         return array( T_CLASS );
 
     }
 
+    /**
+     * Sniffs for @package annotations
+     * 
+     * @param PHP_CodeSniffer_File $phpcsFile Current file being sniffed
+     * @param type $stackPtr Current stack pointer
+     */
     public function process( PHP_CodeSniffer_File $phpcsFile, $stackPtr ) {
         
         $tokens = $phpcsFile->getTokens();
@@ -27,6 +38,13 @@ class Php_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_Sn
 
     }
 
+    /**
+     * 
+     * @param PHP_CodeSniffer_File $phpcsFile File we're sniffing
+     * @param array $tokens All tokens
+     * @param type $index Token index
+     * @param type $stackPtr Current stack pointer
+     */
     private function sniffForPackage( PHP_CodeSniffer_File $phpcsFile, array $tokens, $index, $stackPtr ) {
 
         while ( true && isset($tokens[$index]) ) {
@@ -42,6 +60,13 @@ class Php_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_Sn
 
     }
 
+    /**
+     * Get the index of the docblock at the start of the file
+     * 
+     * @param array $tokens All tokens
+     * 
+     * @return int
+     */
     private function getDocStart( array $tokens ) {
 
         foreach ( $tokens as $index => $token ) {
