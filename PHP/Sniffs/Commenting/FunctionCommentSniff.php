@@ -302,7 +302,7 @@ class PHP_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Snif
                     $previousName = ($previousParam->getVarName() !== '') ? $previousParam->getVarName() : 'UNKNOWN';
                 }
                 
-                $foundParams = $this->checkParam( $realParams, $foundParams, $param, $paramComment );
+                $foundParams = $this->checkParam( $realParams, $foundParams, $param, $paramComment, $errorPos );
 
                 $previousParam = $param;
 
@@ -318,7 +318,7 @@ class PHP_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Snif
      * 
      * @return array
      */
-    protected function checkParam( array $realParams, array $foundParams, $param, $paramComment ) {
+    protected function checkParam( array $realParams, array $foundParams, $param, $paramComment, $errorPos ) {
         
         $pos = $param->getPosition();
         $paramName = ($param->getVarName() !== '') ? $param->getVarName() : '[ UNKNOWN ]';
