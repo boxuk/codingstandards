@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+    <name>boxukcodingstandards</name>
+    <channel>192.168.1.95</channel>
+    <summary>PHP Coding Standards.</summary>
+    <description>-</description>
+    <lead>
+        <name>Box UK</name>
+        <user></user>
+        <email>coders@boxuk.com</email>
+        <active>yes</active>
+    </lead>
+    <date>2011-06-20</date>
+    <time>16:00:00</time>
+    <version>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
+    </version>
+    <stability>
+        <release>stable</release>
+        <api>stable</api>
+    </stability>
+    <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+    <notes>-</notes>
+    <contents>
+        <dir baseinstalldir="/" name="/">
+            <dir name="PHP">
+                <file name="ruleset.xml" role="data" />
+                <dir name="Sniffs">
+                    <dir name="CodeAnalysis">
+                        <file name="LongMethodSniff.php" role="php" />
+                        <file name="PPrefixSniff.php" role="php" />
+                        <file name="SingletonAccessSniff.php" role="php" />
+                    </dir>
+                    <dir name="Commenting">
+                        <file name="FunctionCommentSniff.php" role="php" />
+                        <file name="PackageAnnotationSniff.php" role="php" />
+                    </dir>
+                </dir>
+            </dir>
+        </dir>
+    </contents>
+    <dependencies>
+        <required>
+            <php>
+                <min>5.3.0</min>
+            </php>
+            <pearinstaller>
+                <min>1.9.0</min>
+            </pearinstaller>
+        </required>
+    </dependencies>
+    <phprelease />
+</package>
