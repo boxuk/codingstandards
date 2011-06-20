@@ -3,9 +3,9 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
-    <name>boxukcodingstandards</name>
-    <channel>192.168.1.95</channel>
-    <summary>PHP Coding Standards.</summary>
+    <name>codingstandards</name>
+    <channel>pear.boxuk.com</channel>
+    <summary>PHP Coding Standards</summary>
     <description>-</description>
     <lead>
         <name>Box UK</name>
@@ -26,7 +26,7 @@
     <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
     <notes>-</notes>
     <contents>
-        <dir baseinstalldir="/" name="/">
+        <dir baseinstalldir="/BoxUK/CodingStandards" name="/">
             <dir name="PHP">
                 <file name="ruleset.xml" role="data" />
                 <dir name="Sniffs">
