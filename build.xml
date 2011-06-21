@@ -17,7 +17,7 @@
     
     <target name="pear-package" description="Create PEAR package for PHP standard">
         <phingcall target="pear-package-clean" />
-        <exec dir="PHP" command="pear package" />
+        <exec dir="PHP" command="pear package" passthru="true" checkReturn="true" />
         <copy todir=".">
             <fileset dir="PHP">
                 <include name="*.tgz" />
