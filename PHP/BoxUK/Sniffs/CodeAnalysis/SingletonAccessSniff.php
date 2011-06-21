@@ -4,7 +4,7 @@
  * 
  * @package BoxUK
  */
-class PHP_Sniffs_CodeAnalysis_SingletonAccessSniff implements PHP_CodeSniffer_Sniff {
+class BoxUK_Sniffs_CodeAnalysis_SingletonAccessSniff implements PHP_CodeSniffer_Sniff {
 
     private static $aMethods = array( 'getInstance', 'setInstance' );
 

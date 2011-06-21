@@ -3,40 +3,29 @@
 
     <description>The Box UK PHP coding standard.</description>
 
-    <!-- Include some additional sniffs from the Generic standard -->
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
     <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
     <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-
     <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
-
     <rule ref="Generic.Metrics.CyclomaticComplexity"/>
     <rule ref="Generic.Metrics.NestingLevel"/>
-    
     <rule ref="Generic.PHP.ForbiddenFunctions"/>
-    
-
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <rule ref="Generic.NamingConventions.ConstructorName"/>
     <rule ref="Generic.WhiteSpace.ScopeIndent"/>
     
     <rule ref="PEAR.Functions.ValidDefaultValue"/>
     <rule ref="PEAR.NamingConventions.ValidClassName"/>
-    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
     
-    
+    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>    
     <rule ref="Squiz.Scope.MemberVarScope"/>
     <rule ref="Squiz.Scope.MethodScope"/>
     <rule ref="Squiz.PHP.GlobalKeyword"/>
     <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops"/>
     <rule ref="Squiz.Scope.StaticThisUsage"/>
-    
-    
     <rule ref="Squiz.PHP.NonExecutableCode"/>
-    
-    
     
 </ruleset>

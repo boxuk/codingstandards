@@ -8,7 +8,7 @@
  *
  * @package BoxUK
  */
-class PHP_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sniff {
+class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sniff {
 
     /**
      * The name of the method that we are currently processing.

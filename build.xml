@@ -8,11 +8,30 @@
     </target>
     
     <target name="test-php-cs">
-        <exec command="phpcs -n PHP/ --standard=PHP/" checkreturn="true" passthru="true" />
+        <exec command="phpcs -n PHP/ --standard=PHP/BoxUK" checkreturn="true" passthru="true" />
     </target>
     
     <target name="test-php" depends="test-php-unit,test-php-cs"></target>
     
     <target name="test" depends="test-php"></target>
+    
+    <target name="pear-package" description="Create PEAR package for PHP standard">
+        <phingcall target="pear-package-clean" />
+        <exec dir="PHP" command="pear package" />
+        <copy todir=".">
+            <fileset dir="PHP">
+                <include name="*.tgz" />
+            </fileset>
+        </copy>
+        <phingcall target="pear-package-clean" />
+    </target>
+    
+    <target name="pear-package-clean">
+        <delete>
+            <fileset dir="PHP">
+                <include name="*.tgz" />
+            </fileset>
+        </delete>
+    </target>
     
 </project>

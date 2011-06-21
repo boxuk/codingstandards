@@ -17,5 +17,5 @@ The PHP standard is written for PHP_CodeSniffer (http://pear.php.net/package/PHP
 and can be run by using the *--standard* switch to _phpcs_.
 
 <pre>
-%> phpcs /my/code/php --standard=/path/to/boxuk-codingstandards/PHP
+%> phpcs /my/code/php --standard=/path/to/boxuk-codingstandards/PHP/BoxUK
 </pre>

@@ -103,7 +103,7 @@ class CodingStandardTest extends PHPUnit_Framework_TestCase {
     private function runSniff( $type, $name ) {
         
         $path = sprintf( 'tests/data/php/%s/%s.php', $type, $name );
-        $command = sprintf( 'phpcs %s --standard=PHP', $path );
+        $command = sprintf( 'phpcs %s --standard=PHP/BoxUK', $path );
         
         exec( $command, $output, $returnCode );
 

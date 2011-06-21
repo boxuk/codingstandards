@@ -26,9 +26,9 @@
     <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
     <notes>-</notes>
     <contents>
-        <dir baseinstalldir="/BoxUK/CodingStandards" name="/">
-            <dir name="PHP">
-                <file name="ruleset.xml" role="data" />
+        <dir baseinstalldir="/PHP/CodeSniffer/Standards/" name="/">
+            <dir name="BoxUK">
+                <file name="ruleset.xml" role="php" />
                 <dir name="Sniffs">
                     <dir name="CodeAnalysis">
                         <file name="LongMethodSniff.php" role="php" />
