@@ -89,6 +89,10 @@ class CodingStandardTest extends PHPUnit_Framework_TestCase {
     public function testFileWithCorrectCodingStandardsDoesNotReportAnyErrors() {
         $this->assertSniffPasses( 'ShouldPass' );
     }
+    
+    public function testPackageAnnotationNotRequiredIfClassIsNamespaced() {
+        $this->assertSniffPasses( 'NamespacedClass' );
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     
