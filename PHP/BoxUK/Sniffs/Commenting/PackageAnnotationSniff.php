@@ -58,7 +58,7 @@ class BoxUK_Sniffs_Commenting_PackageAnnotationSniff implements PHP_CodeSniffer_
             // try and fail fast, if we hit much else apart from the namespace
             // then there can't be a namespace
             if ( $value['type'] == 'T_STRING' ) {
-                return false;
+                break;
             }
             
         }
