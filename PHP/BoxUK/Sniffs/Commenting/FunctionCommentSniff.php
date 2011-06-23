@@ -361,13 +361,31 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
             $this->currentFile->addError($error, $errorPos);
         }
 
-        if ($paramComment === '') {
+        if ($paramComment === '' && !$this->isScalarParam($param)) {
             $error = 'Missing comment for param "'.$paramName.'" at position '.$pos;
             $this->currentFile->addError($error, $errorPos);
         }
         
         return $foundParams;
 
+    }
+    
+    /**
+     * Indicates if the paramater type is a scalar
+     * 
+     * @param object $param Parameter to check
+     * 
+     * @return bool
+     */
+    protected function isScalarParam( $param ) {
+        
+        $scalarTypes = array( 'integer', 'float', 'string', 'bool' );
+        
+        return in_array(
+            $param->getType(),
+            $scalarTypes
+        );
+        
     }
 
 }
