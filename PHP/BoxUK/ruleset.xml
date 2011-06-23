@@ -20,7 +20,13 @@
     <rule ref="PEAR.Functions.ValidDefaultValue"/>
     <rule ref="PEAR.NamingConventions.ValidClassName"/>
     
+    <!--
+    See https://github.com/boxuk/codingstandards/issues/2. We have replaced this
+    with our own sniff for the time being until the bug is fixed in CodeSniffer
+    core.
+    
     <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>    
+    -->
     <rule ref="Squiz.Scope.MemberVarScope"/>
     <rule ref="Squiz.Scope.MethodScope"/>
     <rule ref="Squiz.PHP.GlobalKeyword"/>
