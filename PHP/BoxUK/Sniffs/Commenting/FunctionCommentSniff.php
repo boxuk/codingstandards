@@ -95,7 +95,7 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
 
         $comment           = $phpcsFile->getTokensAsString($commentStart, ($commentEnd - $commentStart + 1));
         $this->_methodName = $phpcsFile->getDeclarationName($stackPtr);
-
+        
         try {
             $this->commentParser = new PHP_CodeSniffer_CommentParser_FunctionCommentParser($comment, $phpcsFile);
             $this->commentParser->parse();
@@ -112,7 +112,7 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
             return;
         }
 
-        $this->processParams($commentStart);
+        $this->processParams($commentStart, $commentEnd);
         $this->processReturn($commentStart, $commentEnd);
         $this->processThrows($commentStart);
 
@@ -262,15 +262,19 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
      *
      * @param int $commentStart The position in the stack where
      *                          the comment started.
+     * @param int $commentEnd The position in the stack where
+     *                          the comment ended.
      *
      * @return void
      */
-    protected function processParams($commentStart) {
+    protected function processParams( $commentStart, $commentEnd ) {
         
         $realParams = $this->currentFile->getMethodParameters($this->_functionToken);
         $params      = $this->commentParser->getParams();
         $foundParams = array();
 
+        $this->processScalarParams( $realParams, $params, $commentEnd );
+        
         if (empty($params) === false) {
 
             $lastParm = (count($params) - 1);
@@ -313,8 +317,59 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
     }
     
     /**
+     * Checks scalar func params have @param annotations to specify their type
+     * 
+     * @param array $funcParams Function parameters
+     * @param array $commentParams Comment parameters
+     * @param integer $commentEnd Stack pointer for end of function comment
+     */
+    protected function processScalarParams( array $funcParams, array $commentParams, $commentEnd ) {
+        
+        foreach ( $funcParams as $funcParam ) {
+            
+            if ( !$funcParam['type_hint'] ) {
+                
+                $paramName = $funcParam[ 'name' ];
+                
+                if ( !$this->paramHasAnnotation($paramName,$commentParams) ) {
+                    $error = 'Parameter "' . $paramName . '" without type hint requires @param annotation';
+                    $this->currentFile->addError( $error, $commentEnd );
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    /**
+     * Indicates if an @param annotation exists for the named parameter
+     * 
+     * @param string $paramName
+     * 
+     * @return bool
+     */
+    protected function paramHasAnnotation( $paramName, array $commentParams ) {
+        
+        foreach ( $commentParams as $commentParam ) {
+
+            if ( $paramName == $commentParam->getVarName() ) {
+                return true;
+            }
+            
+        }
+        
+        return false;
+
+    }
+    
+    /**
      * Checks the parameter for cniff errors, adding the parameter to the foundParams
      * array and returning that.
+     * 
+     * @param object $param Parameter object
+     * @param string $paramComment
+     * @param integer $errorPos
      * 
      * @return array
      */
@@ -323,51 +378,31 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
         $pos = $param->getPosition();
         $paramName = ($param->getVarName() !== '') ? $param->getVarName() : '[ UNKNOWN ]';
 
-        // Make sure the names of the parameter comment matches the
-        // actual parameter.
-        if (isset($realParams[($pos - 1)]) === true) {
-            $realName      = $realParams[($pos - 1)]['name'];
-            $foundParams[] = $realName;
-            // Append ampersand to name if passing by reference.
-            if ($realParams[($pos - 1)]['pass_by_reference'] === true) {
-                $realName = '&'.$realName;
-            }
-
-            if ($realName !== $paramName) {
-                $error  = 'Doc comment for var '.$paramName;
-                $error .= ' does not match ';
-                if (strtolower($paramName) === strtolower($realName)) {
-                    $error .= 'case of ';
-                }
-
-                $error .= 'actual variable name '.$realName;
-                $error .= ' at position '.$pos;
-
-                $this->currentFile->addError($error, $errorPos);
-            }
-        } else {
-            // We must have an extra parameter comment.
-            $error = 'Superfluous doc comment at position '.$pos;
-            $this->currentFile->addError($error, $errorPos);
-        }
-
-        if ($param->getVarName() === '') {
-            $error = 'Missing parameter name at position '.$pos;
-             $this->currentFile->addError($error, $errorPos);
-        }
-
-        if ($param->getType() === '') {
-            $error = 'Missing type at position '.$pos;
-            $this->currentFile->addError($error, $errorPos);
-        }
-
-        if ($paramComment === '') {
+        if ($paramComment === '' && !$this->isScalarParam($param)) {
             $error = 'Missing comment for param "'.$paramName.'" at position '.$pos;
             $this->currentFile->addError($error, $errorPos);
         }
         
         return $foundParams;
 
+    }
+    
+    /**
+     * Indicates if the paramater type is a scalar
+     * 
+     * @param object $param Parameter to check
+     * 
+     * @return bool
+     */
+    protected function isScalarParam( $param ) {
+        
+        $scalarTypes = array( 'integer', 'float', 'string', 'bool' );
+        
+        return in_array(
+            $param->getType(),
+            $scalarTypes
+        );
+        
     }
 
 }

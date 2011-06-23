@@ -94,6 +94,13 @@ class CodingStandardTest extends PHPUnit_Framework_TestCase {
         $this->assertSniffPasses( 'NamespacedClass' );
     }
     
+    public function testScalarParametersRequireAParamAnnotation() {
+        $this->assertSniffFails( 'ScalarParamWithoutParamAnnotation' );
+    }
+    
+    public function testScalarParamAnnotationsDoNotRequireAComment() {
+        $this->assertSniffPasses( 'ScalarParamAnnotationWithNoComment' );
+    }
     
     public function testCheckingNamespaceAnnotationsUsingABackslash() {
         $this->assertSniffPasses( 'NamespacedException' );
