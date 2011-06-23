@@ -93,6 +93,11 @@ class CodingStandardTest extends PHPUnit_Framework_TestCase {
     public function testPackageAnnotationNotRequiredIfClassIsNamespaced() {
         $this->assertSniffPasses( 'NamespacedClass' );
     }
+    
+    
+    public function testCheckingNamespaceAnnotationsUsingABackslash() {
+        $this->assertSniffPasses( 'NamespacedException' );
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     
