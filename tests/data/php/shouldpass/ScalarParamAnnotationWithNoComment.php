@@ -7,7 +7,7 @@ class Bar {
     /**
      * Some method
      * 
-     * @param string $string 
+     * @param string $string
      */
     public function foo( $string ) {}
     

@@ -7,7 +7,9 @@ class Bar {
     /**
      * Some method
      *
+     * @param bool $other
+     * 
      */
-    public function foo( $string ) {}
+    public function foo( FooBar $other, $string ) {}
     
 }
