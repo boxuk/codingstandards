@@ -20,4 +20,24 @@ class FunctionCommentThrowTag {
             throw new Exception();
         }
     }
+    
+    
+    /**
+     * Incorrect exception type
+     * 
+     * @throws RandomException
+     */
+    public function fooBar() {
+        throw new FooBarException();
+    }
+    
+    /**
+     * Incorrect exception type; namespaced
+     * @throws \Foo\Bar\RandomException
+     */
+    public function fooBar2() {
+        throw new \Foo\Bar\FooBarException();
+    }
+    
+    
 }
