@@ -369,7 +369,7 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
      * 
      * @param object $param Parameter object
      * @param string $paramComment
-     * @param integer $errorPos
+     * @param int $errorPos
      * 
      * @return array
      */
@@ -396,7 +396,7 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
      */
     protected function isScalarParam( $param ) {
         
-        $scalarTypes = array( 'integer', 'float', 'string', 'bool' );
+        $scalarTypes = array( 'int', 'float', 'string', 'bool' );
         
         return in_array(
             $param->getType(),

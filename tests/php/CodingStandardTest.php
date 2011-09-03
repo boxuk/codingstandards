@@ -106,6 +106,10 @@ class CodingStandardTest extends PHPUnit_Framework_TestCase {
         $this->assertSniffPasses( 'NamespacedException' );
     }
 
+    public function testIntParamAnnotationIsAllowed() {
+        $this->assertSniffPasses( 'IntParam' );
+    }
+
     ////////////////////////////////////////////////////////////////////////////
     
     /**
