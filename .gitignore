@@ -3,3 +3,4 @@ nbproject
 *.tgz
 .DS_Store
 catalog.xml
+PHP/package.xml
