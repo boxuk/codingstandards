@@ -240,14 +240,7 @@ class BoxUK_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sn
         $isSpecialMethod = ($this->_methodName === '__construct' || $this->_methodName === '__destruct');
 
         if ($isSpecialMethod === false && $methodName !== $className) {
-            // Report missing return tag.
-            if ($this->commentParser->getReturn() === null) {
-                /*
-                $error = 'Missing @return tag in function comment';
-                $this->currentFile->addError($error, $commentEnd);
-                 *  GD
-                 */
-            } else if (trim($this->commentParser->getReturn()->getRawContent()) === '') {
+            if (trim($this->commentParser->getReturn()->getRawContent()) === '') {
                 $error    = '@return tag is empty in function comment';
                 $errorPos = ($commentStart + $this->commentParser->getReturn()->getLine());
                 $this->currentFile->addError($error, $errorPos);
